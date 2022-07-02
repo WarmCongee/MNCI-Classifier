@@ -15,22 +15,17 @@ transform = transforms.Compose(
 
 batch_size = 4
 
-trainset = torchvision.datasets.CIFAR10(root='./data', train=True,
-                                        download=True, transform=transform)
-trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size,
-                                          shuffle=True, num_workers=2)
-
-# testset = torchvision.datasets.CIFAR10(root='./data', train=False,
-#                                       download=True, transform=transform)
-# testloader = torch.utils.data.DataLoader(testset, batch_size=batch_size,
-#                                         shuffle=False, num_workers=2)
+train_set = torchvision.datasets.CIFAR10(root='./data', train=True,
+                                         download=True, transform=transform)
+train_loader = torch.utils.data.DataLoader(train_set, batch_size=batch_size,
+                                           shuffle=True, num_workers=2)
 
 classes = ('plane', 'car', 'bird', 'cat',
            'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
 
 # get some random training images
-dataiter = iter(trainloader)
+dataiter = iter(train_loader)
 images, labels = dataiter.next()
 
 # show images
@@ -43,7 +38,7 @@ images, labels = dataiter.next()
 # CreateNet
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 print(device)
-net = Net()
+net = CIFARNet()
 net.to(device)
 
 criterion = nn.CrossEntropyLoss()
@@ -52,7 +47,7 @@ optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
 for epoch in range(10):  # loop over the dataset multiple times
 
     running_loss = 0.0
-    for i, data in enumerate(trainloader, 0):
+    for i, data in enumerate(train_loader, 0):
         # get the inputs; data is a list of [inputs, labels]
         inputs, labels = data[0].to(device), data[1].to(device)
 

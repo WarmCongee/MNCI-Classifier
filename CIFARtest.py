@@ -2,7 +2,7 @@ import torch
 import torchvision
 import torchvision.transforms as transforms
 from dlwutils.show import imshow
-from dlwutils.network import Net
+from dlwutils.network import CIFARNet
 from dlwutils.parameters import *
 
 transform = transforms.Compose(
@@ -19,7 +19,7 @@ testloader = torch.utils.data.DataLoader(testset, batch_size=batch_size,
 classes = ('plane', 'car', 'bird', 'cat',
            'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
-net = Net()
+net = CIFARNet()
 net.load_state_dict(torch.load(PATH))
 
 # prepare to count predictions for each class
