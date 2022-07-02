@@ -20,7 +20,7 @@ classes = ('plane', 'car', 'bird', 'cat',
            'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
 net = CIFARNet()
-net.load_state_dict(torch.load(PATH))
+net.load_state_dict(torch.load(CIFARPATH))
 
 # prepare to count predictions for each class
 correct_pred = {classname: 0 for classname in classes}

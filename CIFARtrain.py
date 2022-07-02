@@ -69,4 +69,4 @@ for epoch in range(10):  # loop over the dataset multiple times
 print('Finished Training')
 
 
-torch.save(net.state_dict(), PATH)
+torch.save(net.state_dict(), CIFARPATH)
