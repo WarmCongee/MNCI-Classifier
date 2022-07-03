@@ -37,13 +37,14 @@ CIFARoptimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
 class MNISTNet(nn.Module):
     def __init__(self):
         super().__init__()
+        # 对于不能整除的数值，卷积向下取整，池化向上取整。
         # 构建卷积函数
         self.conv1 = nn.Conv2d(1, 64, 3)
         # 池化层经验提取函数
         self.pool = nn.MaxPool2d(2, 2)
         self.conv2 = nn.Conv2d(64, 128, 3)
         # 线性全连接函数
-        self.fc1 = nn.Linear(128 * 14 * 14, 1024)
+        self.fc1 = nn.Linear(128 * 5 * 5, 1024)
         self.fc2 = nn.Linear(1024, 10)
 
     def forward(self, x):
