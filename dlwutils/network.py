@@ -7,12 +7,12 @@ class CIFARNet(nn.Module):
     def __init__(self):
         super().__init__()
         # 构建卷积函数
-        self.conv1 = nn.Conv2d(3, 36, 5)
+        self.conv1 = nn.Conv2d(3, 64, 5)
         # 池化层经验提取函数
         self.pool = nn.MaxPool2d(2, 2)
-        self.conv2 = nn.Conv2d(36, 72, 5)
+        self.conv2 = nn.Conv2d(64, 128, 5)
         # 线性全连接函数
-        self.fc1 = nn.Linear(72 * 5 * 5, 1024)
+        self.fc1 = nn.Linear(128 * 5 * 5, 1024)
         self.fc2 = nn.Linear(1024, 96)
         self.fc3 = nn.Linear(96, 10)
 
@@ -39,13 +39,13 @@ class MNISTNet(nn.Module):
         super().__init__()
         # 对于不能整除的数值，卷积向下取整，池化向上取整。
         # 构建卷积函数
-        self.conv1 = nn.Conv2d(1, 64, 3)
+        self.conv1 = nn.Conv2d(1, 6, 5)
         # 池化层经验提取函数
         self.pool = nn.MaxPool2d(2, 2)
-        self.conv2 = nn.Conv2d(64, 128, 3)
+        self.conv2 = nn.Conv2d(6, 16, 5)
         # 线性全连接函数
-        self.fc1 = nn.Linear(128 * 5 * 5, 1024)
-        self.fc2 = nn.Linear(1024, 10)
+        self.fc1 = nn.Linear(16 * 4 * 4, 120)
+        self.fc2 = nn.Linear(120, 84)
 
     def forward(self, x):
         # 输入x经过卷积conv1之后，经过激活函数ReLU，使用2x2的窗口进行最大池化Max pooling，然后更新到x。

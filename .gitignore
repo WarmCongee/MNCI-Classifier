@@ -129,3 +129,8 @@ dmypy.json
 .idea/
 
 data/
+
+model/
+
+cifar_net.pth
+mnist_net.pth
