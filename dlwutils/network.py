@@ -7,12 +7,12 @@ class CIFARNet(nn.Module):
     def __init__(self):
         super().__init__()
         # 构建卷积函数
-        self.conv1 = nn.Conv2d(3, 64, 5)
+        self.conv1 = nn.Conv2d(3, 96, 5)
         # 池化层经验提取函数
         self.pool = nn.MaxPool2d(2, 2)
-        self.conv2 = nn.Conv2d(64, 128, 5)
+        self.conv2 = nn.Conv2d(96, 256, 5)
         # 线性全连接函数
-        self.fc1 = nn.Linear(128 * 5 * 5, 1024)
+        self.fc1 = nn.Linear(256 * 5 * 5, 1024)
         self.fc2 = nn.Linear(1024, 96)
         self.fc3 = nn.Linear(96, 10)
 

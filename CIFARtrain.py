@@ -38,7 +38,6 @@ images, labels = dataiter.next()
 # CreateNet
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 print('using device:', device)
-print(device)
 net = CIFARNet()
 net.to(device)
 
